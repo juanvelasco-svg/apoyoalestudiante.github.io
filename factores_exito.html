@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: El Ecosistema del Éxito</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #8c1919;
+            --color-secondary: #fdb400;
+            --color-accent: #0077B6;
+            --color-text-dark: #333333;
+            --color-text-light: #ffffff;
+            --color-background-light: #f4f4f4;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-background-light);
+            color: var(--color-text-dark);
+        }
+        h1, h2, h3 {
+            color: var(--color-primary);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .flow-line::after {
+            content: '→';
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+            margin: 0 1rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">El Ecosistema del Éxito: Liderazgo e Inteligencia</h1>
+            <p class="mt-2 text-lg text-gray-600">Descubre las claves que combinan visión estratégica y habilidades prácticas para alcanzar tu máximo potencial.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12">
+
+        <section id="pilares" class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">Los 5 Pilares del Liderazgo Exitoso</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">El éxito no es casualidad. Se sustenta en cinco factores interconectados que los líderes y empresarios más destacados cultivan constantemente. Cada pilar tiene un peso específico en la fórmula del éxito.</p>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="chart-container h-[350px] md:h-[450px] max-w-md">
+                    <canvas id="pilaresLiderazgoChart"></canvas>
+                </div>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 text-center">
+                    <div class="p-4 rounded-lg">
+                        <span class="text-3xl">🧠</span>
+                        <h3 class="font-semibold mt-2">Inteligencia Estratégica</h3>
+                        <p class="text-sm text-gray-500">Anticipar el futuro y tomar decisiones audaces.</p>
+                    </div>
+                    <div class="p-4 rounded-lg">
+                        <span class="text-3xl">⚙️</span>
+                        <h3 class="font-semibold mt-2">Habilidades de Ejecución</h3>
+                        <p class="text-sm text-gray-500">Convertir ideas en resultados tangibles.</p>
+                    </div>
+                    <div class="p-4 rounded-lg">
+                        <span class="text-3xl">❤️</span>
+                        <h3 class="font-semibold mt-2">Inteligencia Emocional</h3>
+                        <p class="text-sm text-gray-500">Inspirar, motivar y gestionar equipos con empatía.</p>
+                    </div>
+                     <div class="p-4 rounded-lg">
+                        <span class="text-3xl">📚</span>
+                        <h3 class="font-semibold mt-2">Aprendizaje Continuo</h3>
+                        <p class="text-sm text-gray-500">Mantenerse relevante en un mundo cambiante.</p>
+                    </div>
+                    <div class="p-4 rounded-lg">
+                        <span class="text-3xl">🤝</span>
+                        <h3 class="font-semibold mt-2">Redes e Influencia</h3>
+                        <p class="text-sm text-gray-500">Construir relaciones y comunicar ideas con impacto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="perfiles" class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">Perfiles de Liderazgo: ¿Cuál es el Tuyo?</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">No todos los roles exigen el mismo balance de habilidades. La autoevaluación es el primer paso para el crecimiento. Compara estos arquetipos y reflexiona sobre tus propias fortalezas y áreas de oportunidad.</p>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                 <div class="chart-container h-[400px] md:h-[500px] max-w-2xl">
+                    <canvas id="perfilesLiderazgoChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="espectro" class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">El Espectro de la Inteligencia: Teoría vs. Práctica</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">La inteligencia no es monolítica. Se mueve en un espectro entre el conocimiento profundo y la habilidad para resolver problemas del mundo real. El dominio de ambos es lo que define a la inteligencia avanzada.</p>
+            <div class="bg-white rounded-lg shadow-lg p-6">
+                <div class="chart-container h-[400px] md:h-[500px] max-w-2xl">
+                    <canvas id="teoriaPracticaChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="sinergia" class="mb-16">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">La Sinergia: Cuando 1 + 1 = 3</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">La verdadera magia ocurre cuando las diferentes facetas de la inteligencia se combinan. Esta sinergia es el motor de la innovación disruptiva y el liderazgo que inspira y transforma organizaciones.</p>
+             <div class="space-y-8">
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-center text-gray-700 mb-6">Innovación Disruptiva</h3>
+                    <div class="flex flex-col md:flex-row items-center justify-center">
+                        <div class="text-center p-4 border-2 border-dashed border-gray-300 rounded-lg">
+                            <span class="text-4xl">💡</span>
+                            <p class="font-semibold mt-2" style="color: var(--color-accent);">Creatividad</p>
+                        </div>
+                        <div class="text-4xl font-bold mx-4" style="color: var(--color-secondary);">+</div>
+                        <div class="text-center p-4 border-2 border-dashed border-gray-300 rounded-lg">
+                            <span class="text-4xl">🧠</span>
+                            <p class="font-semibold mt-2" style="color: var(--color-accent);">Aprendizaje Profundo</p>
+                        </div>
+                        <div class="hidden md:block text-4xl font-bold mx-4" style="color: var(--color-secondary);">→</div>
+                        <div class="md:hidden text-4xl font-bold my-4" style="color: var(--color-secondary);">↓</div>
+                        <div class="text-center p-6 bg-green-100 rounded-lg">
+                             <span class="text-4xl">🚀</span>
+                            <p class="font-bold text-lg mt-2 text-green-800">Nuevas Realidades</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-xl font-bold text-center text-gray-700 mb-6">Liderazgo Efectivo</h3>
+                     <div class="flex flex-col md:flex-row items-center justify-center">
+                        <div class="text-center p-4 border-2 border-dashed border-gray-300 rounded-lg">
+                            <span class="text-4xl">❤️</span>
+                            <p class="font-semibold mt-2" style="color: var(--color-accent);">Inteligencia Emocional</p>
+                        </div>
+                        <div class="text-4xl font-bold mx-4" style="color: var(--color-secondary);">+</div>
+                        <div class="text-center p-4 border-2 border-dashed border-gray-300 rounded-lg">
+                            <span class="text-4xl">🛠️</span>
+                            <p class="font-semibold mt-2" style="color: var(--color-accent);">Resolución Práctica</p>
+                        </div>
+                        <div class="hidden md:block text-4xl font-bold mx-4" style="color: var(--color-secondary);">→</div>
+                        <div class="md:hidden text-4xl font-bold my-4" style="color: var(--color-secondary);">↓</div>
+                        <div class="text-center p-6 bg-blue-100 rounded-lg">
+                             <span class="text-4xl">🏆</span>
+                            <p class="font-bold text-lg mt-2 text-blue-800">Equipos de Alto Rendimiento</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white text-center py-4 mt-12">
+        <p>&copy; 2024 Tu Guía Universitaria. Adaptado para el éxito profesional.</p>
+    </footer>
+
+    <script>
+        const primaryColor = '#8c1919';
+        const secondaryColor = '#fdb400';
+        const accentColor = '#0077B6';
+        const accentColor2 = '#48CAE4';
+        const textColorDark = '#333333';
+        const textColorLight = '#ffffff';
+
+        const wrapLabel = (str, maxWidth = 16) => {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = word;
+                } else {
+                    currentLine = (currentLine + ' ' + word).trim();
+                }
+            }
+            if (currentLine) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        };
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: textColorDark,
+                        font: {
+                            size: 14
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleFont: { size: 16 },
+                    bodyFont: { size: 14 },
+                    padding: 10,
+                    cornerRadius: 4
+                }
+            }
+        };
+
+        const pilaresData = {
+            labels: [
+                wrapLabel('Inteligencia Estratégica (30%)'),
+                wrapLabel('Habilidades de Ejecución (25%)'),
+                wrapLabel('Inteligencia Emocional y Liderazgo (20%)'),
+                wrapLabel('Aprendizaje Continuo (15%)'),
+                wrapLabel('Redes e Influencia (10%)')
+            ],
+            datasets: [{
+                label: 'Pilares del Liderazgo',
+                data: [30, 25, 20, 15, 10],
+                backgroundColor: [primaryColor, accentColor, secondaryColor, accentColor2, '#ADB5BD'],
+                borderColor: textColorLight,
+                borderWidth: 3,
+                hoverOffset: 4
+            }]
+        };
+        new Chart(document.getElementById('pilaresLiderazgoChart'), {
+            type: 'doughnut',
+            data: pilaresData,
+            options: { ...defaultChartOptions }
+        });
+
+        const perfilesData = {
+            labels: ['Estrategia', 'Liderazgo', 'Ejecución', 'Aprendizaje', 'Redes'],
+            datasets: [
+                {
+                    label: 'Gerente Típico',
+                    data: [6, 7, 5, 5, 4],
+                    backgroundColor: 'rgba(140, 25, 25, 0.2)',
+                    borderColor: primaryColor,
+                    pointBackgroundColor: primaryColor,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: primaryColor
+                },
+                {
+                    label: 'Emprendedor Exitoso',
+                    data: [8, 9, 7, 8, 9],
+                    backgroundColor: 'rgba(253, 180, 0, 0.2)',
+                    borderColor: secondaryColor,
+                    pointBackgroundColor: secondaryColor,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: secondaryColor
+                },
+                {
+                    label: 'CEO Global',
+                    data: [9, 8, 9, 9, 10],
+                    backgroundColor: 'rgba(0, 119, 182, 0.2)',
+                    borderColor: accentColor,
+                    pointBackgroundColor: accentColor,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: accentColor
+                }
+            ]
+        };
+        new Chart(document.getElementById('perfilesLiderazgoChart'), {
+            type: 'radar',
+            data: perfilesData,
+            options: {
+                ...defaultChartOptions,
+                scales: {
+                    r: {
+                        angleLines: { color: '#ddd' },
+                        grid: { color: '#ddd' },
+                        pointLabels: {
+                            font: { size: 14, weight: 'bold' },
+                            color: textColorDark
+                        },
+                        ticks: {
+                            color: textColorLight,
+                            backdropColor: 'rgba(0,0,0,0.6)',
+                            stepSize: 2
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                }
+            }
+        });
+        
+        const teoriaPracticaData = {
+            datasets: [
+                {
+                    label: 'Profesor Universitario',
+                    data: [{ x: 90, y: 10 }],
+                    backgroundColor: primaryColor,
+                    pointRadius: 10,
+                    pointHoverRadius: 15
+                },
+                {
+                    label: 'Técnico Empírico',
+                    data: [{ x: 30, y: 70 }],
+                    backgroundColor: accentColor,
+                    pointRadius: 10,
+                    pointHoverRadius: 15
+                },
+                {
+                    label: 'Ingeniero',
+                    data: [{ x: 60, y: 60 }],
+                    backgroundColor: secondaryColor,
+                    pointRadius: 10,
+                    pointHoverRadius: 15
+                },
+                 {
+                    label: 'Inteligencia Avanzada (Ideal)',
+                    data: [{ x: 85, y: 85 }],
+                    backgroundColor: 'rgba(72, 202, 228, 0.5)',
+                    pointRadius: 30,
+                    pointHoverRadius: 35,
+                    pointStyle: 'star',
+                }
+            ]
+        };
+        new Chart(document.getElementById('teoriaPracticaChart'), {
+            type: 'scatter',
+            data: teoriaPracticaData,
+            options: {
+                ...defaultChartOptions,
+                scales: {
+                    x: {
+                        type: 'linear',
+                        position: 'bottom',
+                        title: {
+                            display: true,
+                            text: 'Aprendizaje Profundo (Teoría %)',
+                            font: { size: 16, weight: 'bold' },
+                            color: textColorDark
+                        },
+                        min: 0,
+                        max: 100
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Inteligencia Práctica (Resolución %)',
+                            font: { size: 16, weight: 'bold' },
+                            color: textColorDark
+                        },
+                        min: 0,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
