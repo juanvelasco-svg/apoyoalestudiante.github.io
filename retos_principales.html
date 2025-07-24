@@ -14,54 +14,125 @@
     <!-- Visualization & Content Choices: 1. Challenges: Report Info -> 10 emotional challenges. Goal -> Inform/Organize. Viz -> Interactive Cards. Interaction -> Click to expand. Justification -> Avoids a long, intimidating list; encourages focused exploration. Library -> HTML/CSS/JS. 2. IE Dimensions: Report Info -> 5 dimensions of IE. Goal -> Compare/Inform. Viz -> Radar Chart. Interaction -> Hover for details. Justification -> Visualizes the interconnected nature of IE components effectively. Library -> Chart.js. 3. Social Skills: Report Info -> Impacts of social skills. Goal -> Inform. Viz -> Icon-based grid. Interaction -> Hover effects. Justification -> Scannable and visually appealing. Library -> HTML/CSS. 4. High Intelligence: Report Info -> High vs. Low IE impact. Goal -> Compare. Viz -> Toggle switch. Interaction -> Click to switch views. Justification -> Creates a powerful, direct comparison. Library -> HTML/CSS/JS. 5. Resources: Report Info -> Recommended apps/videos. Goal -> Provide tools. Viz -> Filterable gallery. Interaction -> Filter buttons. Justification -> Highly practical and user-centric. Library -> HTML/CSS/JS. -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
-        body {
-            font-family: 'Manrope', sans-serif;
-            background-color: #F8F7F4;
-            color: #2d3748;
-        }
-        .nav-link {
-            transition: color 0.3s, border-bottom-color 0.3s;
-            border-bottom: 2px solid transparent;
-        }
-        .nav-link:hover, .nav-link.active {
-            color: #2c7a7b;
-            border-bottom-color: #2c7a7b;
-        }
-        .challenge-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .challenge-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-        }
-        .details-panel {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.7s ease-in-out;
-        }
-        .details-panel.open {
-            max-height: 500px;
-        }
-        .special-challenge {
-            border: 2px solid #E57373;
-            background-color: #FEF2F2;
-        }
-        .chart-container {
-            position: relative;
-            margin: auto;
-            height: 40vh;
-            width: 80vw;
-            max-width: 500px;
-            max-height: 500px;
-        }
-        .resource-card {
-            transition: all 0.3s ease;
-        }
-        .filter-btn.active {
-            background-color: #2c7a7b;
-            color: white;
-        }
-    </style>
+    /* Define your custom color palette to match index.html */
+    :root {
+        --color-primary: #8c1919; /* Rojo oscuro UPCH */
+        --color-secondary: #fdb400; /* Dorado UPCH */
+        --color-text-dark: #333; /* Texto oscuro general */
+        --color-text-light: #fff; /* Texto claro */
+        --color-background-light: #f4f4f4; /* Fondo suave */
+        --color-accent: #000; /* Negro UPCH para acentos */
+    }
+
+    body {
+        font-family: 'Manrope', sans-serif; /* Keep Manrope, it's modern */
+        background-color: var(--color-background-light); /* Use main background color */
+        color: var(--color-text-dark); /* Use main text color */
+    }
+
+    /* Adjust navigation link colors */
+    .nav-link {
+        transition: color 0.3s, border-bottom-color 0.3s;
+        border-bottom: 2px solid transparent;
+        color: var(--color-primary); /* Dark red for links */
+    }
+    .nav-link:hover, .nav-link.active {
+        color: var(--color-secondary); /* Gold on hover/active */
+        border-bottom-color: var(--color-secondary); /* Gold underline */
+    }
+
+    /* Adjust header background and text */
+    header {
+        background-color: var(--color-primary); /* Primary red */
+        color: var(--color-text-light); /* White text */
+    }
+    header h1 {
+        color: var(--color-secondary); /* Gold for the main title in header */
+    }
+
+    /* Adjust hero section */
+    #hero {
+        background-color: #FEF2F2; /* A very light red/pink shade, similar to a lighter version of primary */
+    }
+    #hero h2 {
+        color: var(--color-primary); /* Primary red for main hero title */
+    }
+    #hero p {
+        color: #555; /* Slightly darker than default text-dark for contrast */
+    }
+
+    /* Adjust challenge card special border */
+    .special-challenge {
+        border: 2px solid var(--color-secondary); /* Gold border for special challenges */
+        background-color: #FFFBEB; /* Lighter background for special cards */
+    }
+
+    /* Adjust section headings and general text */
+    h3, h4 {
+        color: var(--color-primary); /* Use primary color for headings */
+    }
+    p, .text-gray-600 {
+        color: var(--color-text-dark); /* Ensure main body text uses the dark text color */
+    }
+    .text-gray-500 { /* For smaller descriptive texts */
+        color: #777;
+    }
+
+    /* Adjust solution section background */
+    #soluciones, #herramientas {
+        background-color: var(--color-background-light); /* Consistent light background */
+    }
+
+    /* Chart colors */
+    .chart-container canvas {
+        background-color: white; /* Ensure chart background is clear */
+        border-radius: 8px; /* Soften edges */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Toggle button in High Intelligence section */
+    #ai-toggle-btn {
+        background-color: var(--color-primary);
+        color: var(--color-text-light);
+    }
+    #ai-toggle-btn:hover {
+        background-color: #a02020; /* Darker red on hover */
+    }
+
+    /* Filter buttons */
+    .filter-btn {
+        background-color: var(--color-primary);
+        color: var(--color-text-light);
+    }
+    .filter-btn:hover {
+        background-color: #a02020;
+    }
+    .filter-btn.active {
+        background-color: var(--color-secondary); /* Gold when active */
+        color: var(--color-text-dark); /* Dark text on gold */
+        font-weight: bold; /* Make active filter stand out */
+    }
+
+    /* Resource card tags */
+    .resource-card span {
+        font-weight: bold;
+    }
+    .resource-card span.bg-blue-100 { /* For 'App' type */
+        background-color: #D6E8E8; /* Lighter teal */
+        color: #2c7a7b; /* Darker teal */
+    }
+    .resource-card span.bg-red-100 { /* For 'Video' type */
+        background-color: #FEE2E2; /* Lighter red */
+        color: #E57373; /* Darker red */
+    }
+
+    /* Footer colors */
+    footer {
+        background-color: var(--color-accent); /* Black background */
+        color: var(--color-text-light); /* White text */
+    }
+
+</style>
 </head>
 <body class="antialiased">
 
@@ -69,10 +140,12 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <h1 class="text-xl font-bold text-gray-800">Bienestar y Exito Universitario</h1>
             <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link">Inicio</a> <a href="#desafios" class="nav-link">Desafíos</a>
                 <a href="#desafios" class="nav-link">Desafíos</a>
                 <a href="#soluciones" class="nav-link">Soluciones</a>
                 <a href="#alta-inteligencia" class="nav-link">Alta Inteligencia</a>
                 <a href="#herramientas" class="nav-link">Herramientas</a>
+                <a href="retos_principales.html" class="nav-link-header">Los 10 Retos Clave</a>
             </div>
         </nav>
     </header>
