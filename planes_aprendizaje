@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Planes y Estrategias de Aprendizaje</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #8c1919;
+            --color-secondary: #fdb400;
+            --color-text-dark: #333333;
+            --color-text-light: #ffffff;
+            --color-background-light: #f4f4f4;
+            --color-accent: #000000;
+        }
+        body {
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--color-background-light);
+            color: var(--color-text-dark);
+        }
+        .bg-primary { background-color: var(--color-primary); }
+        .bg-secondary { background-color: var(--color-secondary); }
+        .bg-accent { background-color: var(--color-accent); }
+        .text-primary { color: var(--color-primary); }
+        .text-secondary { color: var(--color-secondary); }
+        .text-light { color: var(--color-text-light); }
+        .border-primary { border-color: var(--color-primary); }
+        .border-secondary { border-color: var(--color-secondary); }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+                max-height: 400px;
+            }
+        }
+        .flow-arrow {
+            font-size: 2rem;
+            color: var(--color-secondary);
+            line-height: 1;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-primary text-light p-6 shadow-lg">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-bold">Planes y Estrategias para Aprender</h1>
+            <p class="mt-2 text-lg font-light">Descubre tu camino hacia un conocimiento más profundo y duradero.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+        <section id="intro" class="text-center mb-12">
+            <p class="text-lg max-w-3xl mx-auto text-gray-700">
+                El aprendizaje no es un proceso único; evoluciona a través de distintas fases. Desde la memorización básica hasta la aplicación crítica del conocimiento, cada nivel requiere enfoques y herramientas diferentes. Esta guía visual te ayudará a identificar cada etapa y a potenciar tu estudio para alcanzar el éxito.
+            </p>
+        </section>
+
+        <div class="space-y-12">
+
+            <section id="superficial" class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <div class="p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-primary mb-4 flex items-center justify-center"><span class="text-4xl mr-3"> поверхностный </span>1. Aprendizaje Superficial</h2>
+                    <p class="text-gray-600 mb-6 text-center">Se enfoca en la memorización literal de datos para cumplir requisitos mínimos, impulsado por motivos externos como aprobar un examen. El conocimiento adquirido es frágil y se olvida con facilidad.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="font-bold text-xl mb-4 text-center">Puntos Críticos</h3>
+                            <p class="text-gray-600 mb-4 text-center">Este enfoque presenta riesgos significativos que limitan el aprendizaje real. La distribución de estos riesgos muestra por qué es crucial avanzar hacia niveles más profundos.</p>
+                            <div class="chart-container">
+                                <canvas id="superficialChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-bold text-xl mb-2">Estrategias Clave</h3>
+                                <ul class="list-none space-y-2 text-gray-700">
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Repaso inmediato y repetición mecánica.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Uso de tarjetas de memoria (flashcards).</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Creación de glosarios y listas de términos.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-2">Herramientas Digitales</h3>
+                                <ul class="list-none space-y-2 text-gray-700">
+                                    <li class="flex items-start"><span class="text-secondary mr-2">📱</span> <strong>Quizlet / Memrise:</strong> Para flashcards y repetición espaciada.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">📱</span> <strong>Google Keep:</strong> Para listas rápidas y apuntes volátiles.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="estrategico" class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <div class="p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-primary mb-4 flex items-center justify-center"><span class="text-4xl mr-3">🎯</span>2. Aprendizaje Estratégico</h2>
+                    <p class="text-gray-600 mb-6 text-center">El objetivo es maximizar los resultados académicos. Combina la memorización con una organización eficiente del estudio para superar las evaluaciones con éxito.</p>
+
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                         <div class="space-y-6">
+                            <div>
+                                <h3 class="font-bold text-xl mb-2">Estrategias Clave</h3>
+                                <ul class="list-none space-y-2 text-gray-700">
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Planificación y priorización de temas.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Práctica con modelos de examen y simulacros.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Elaboración de resúmenes y esquemas jerárquicos.</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-2">Herramientas Digitales</h3>
+                                <ul class="list-none space-y-2 text-gray-700">
+                                    <li class="flex items-start"><span class="text-secondary mr-2">📱</span> <strong>Notion / OneNote:</strong> Para organizar apuntes y crear cronogramas.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">📱</span> <strong>Google Calendar:</strong> Para programar sesiones de estudio y repasos.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">📱</span> <strong>Kahoot!:</strong> Para practicar con cuestionarios tipo test.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-4 text-center">Foco de las Estrategias</h3>
+                            <p class="text-gray-600 mb-4 text-center">Las tácticas de este nivel se centran en la eficiencia y el rendimiento. El gráfico compara el esfuerzo dedicado a cada tipo de actividad estratégica.</p>
+                            <div class="chart-container">
+                                <canvas id="estrategicoChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="profundo" class="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition-transform duration-300">
+                <div class="p-6 md:p-8">
+                    <h2 class="text-3xl font-bold text-primary mb-4 flex items-center justify-center"><span class="text-4xl mr-3">💡</span>3. Aprendizaje Profundo</h2>
+                    <p class="text-gray-600 mb-6 text-center">Aquí, la meta es comprender, analizar, relacionar y aplicar el conocimiento de forma significativa. Se busca el sentido y la relevancia de lo aprendido, logrando una retención duradera.</p>
+
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 class="font-bold text-xl mb-4 text-center">El Camino hacia la Comprensión</h3>
+                            <p class="text-gray-600 mb-4 text-center">Este nivel integra diversas estrategias cognitivas para construir un conocimiento sólido y aplicable. El siguiente diagrama ilustra cómo se conectan estas prácticas.</p>
+                            <div class="p-4 border-2 border-dashed border-gray-300 rounded-lg">
+                                <div class="flex flex-col items-center space-y-2 text-center">
+                                    <div class="bg-primary text-light font-bold py-2 px-4 rounded-lg">Aplicación Práctica</div>
+                                    <div class="flow-arrow">↓</div>
+                                    <div class="bg-primary text-light font-bold py-2 px-4 rounded-lg">Construcción de Argumentos</div>
+                                    <div class="flow-arrow">↓</div>
+                                    <div class="flex space-x-4">
+                                        <div class="bg-gray-200 py-2 px-4 rounded-lg">Aprendizaje Colaborativo</div>
+                                        <div class="bg-gray-200 py-2 px-4 rounded-lg">Pensamiento Metacognitivo</div>
+                                    </div>
+                                    <div class="flow-arrow">↓</div>
+                                    <div class="bg-secondary text-accent font-bold py-3 px-6 rounded-full shadow-lg">Comprensión Significativa</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="space-y-6">
+                            <div>
+                                <h3 class="font-bold text-xl mb-2">Estrategias Clave</h3>
+                                <ul class="list-none space-y-2 text-gray-700">
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Crear mapas conceptuales para conectar ideas.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Resolver problemas reales y participar en debates.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">●</span> Reflexionar sobre el propio proceso de aprendizaje (metacognición).</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl mb-2">Herramientas Digitales</h3>
+                                <ul class="list-none space-y-2 text-gray-700">
+                                    <li class="flex items-start"><span class="text-secondary mr-2">📱</span> <strong>Miro / MindMeister:</strong> Para mapas conceptuales y diagramas.</li>
+                                    <li class="flex items-start"><span class="text-secondary mr-2">📱</span> <strong>Perusall / Google Docs:</strong> Para debate y construcción colaborativa.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="ia" class="bg-accent text-light rounded-xl shadow-lg p-8 text-center transform hover:scale-105 transition-transform duration-300">
+                 <h2 class="text-3xl font-bold text-secondary mb-4 flex items-center justify-center"><span class="text-4xl mr-3">🤖</span>Un Aliado Transversal: La IA</h2>
+                 <p class="max-w-3xl mx-auto">
+                    En todos los niveles de aprendizaje, tu "IA favorita" puede ser un potente catalizador. La clave está en formular el "prompt" o la instrucción correcta. Úsala para generar resúmenes, crear cuestionarios, explicar conceptos complejos o simular debates. Aprender a interactuar con la IA es, en sí mismo, un ejercicio de pensamiento estratégico y profundo.
+                 </p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="bg-primary text-light mt-12 py-6">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 Tu Guía Universitaria. Adaptado para la visualización de datos de aprendizaje.</p>
+        </div>
+    </footer>
+
+    <script>
+        function wrapLabels(label, maxWidth) {
+            const words = label.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + words[i].length + 1 < maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            }
+            return label;
+        };
+        
+        const commonTooltipOptions = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: tooltipTitleCallback
+                    },
+                    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                    titleFont: { size: 14, weight: 'bold' },
+                    bodyFont: { size: 12 },
+                    padding: 10,
+                    cornerRadius: 4,
+                }
+            }
+        };
+
+        const superficialCtx = document.getElementById('superficialChart').getContext('2d');
+        new Chart(superficialCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Riesgo de Olvido Rápido', 'Baja Transferencia del Conocimiento', 'Integración Pobre de Conceptos'],
+                datasets: [{
+                    label: 'Puntos Críticos',
+                    data: [50, 35, 15],
+                    backgroundColor: [
+                        '#8c1919', 
+                        '#fdb400',
+                        '#6b7280',
+                    ],
+                    borderColor: '#f4f4f4',
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    ...commonTooltipOptions.plugins,
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 12
+                            },
+                            padding: 20,
+                            boxWidth: 15,
+                        }
+                    },
+                    title: {
+                        display: false
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        const estrategicoCtx = document.getElementById('estrategicoChart').getContext('2d');
+        new Chart(estrategicoCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Gestión del Tiempo y Planificación', 'Práctica para Exámenes', 'Organización de Contenidos'],
+                datasets: [{
+                    label: 'Énfasis de la Estrategia (%)',
+                    data: [45, 35, 20],
+                    backgroundColor: [
+                        'rgba(140, 25, 25, 0.7)',
+                        'rgba(253, 180, 0, 0.7)',
+                        'rgba(107, 114, 128, 0.7)',
+                    ],
+                    borderColor: [
+                        '#8c1919',
+                        '#fdb400',
+                        '#6b7280',
+                    ],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 50,
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            callback: function(value) {
+                                const label = this.getLabelForValue(value);
+                                return wrapLabels(label, 20);
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                     ...commonTooltipOptions.plugins,
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: false
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
